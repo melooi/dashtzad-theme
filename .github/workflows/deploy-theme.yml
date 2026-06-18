@@ -9,18 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: Configure FTP
 
     steps:
-      - name: Check FTP password length
-        env:
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          echo "FTP_PASSWORD length: ${#FTP_PASSWORD}"
-          if [ -z "$FTP_PASSWORD" ]; then
-            echo "FTP_PASSWORD is empty"
-            exit 1
-          fi
-
       - name: Checkout
         uses: actions/checkout@v4
 
