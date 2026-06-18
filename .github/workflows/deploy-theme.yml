@@ -9,7 +9,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: Configure FTP
 
     steps:
       - name: Checkout
@@ -25,8 +24,15 @@ jobs:
           local-dir: ./
           server-dir: ./
           exclude: |
+            .git/**
+            .git*
+            .github/**
+            .github*
+            **/.git/**
             **/.git*
             **/.github/**
+            **/.github*
             **/node_modules/**
+            node_modules/**
             **/.DS_Store
-            **/README.md
+            README.md
