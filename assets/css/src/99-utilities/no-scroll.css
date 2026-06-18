@@ -1,0 +1,4 @@
+/* 99-utilities/no-scroll.css
+   Hide scrollbars on horizontal scrollers (nav, rails). */
+.dz-no-scroll::-webkit-scrollbar{ display:none; }
+.dz-no-scroll{ scrollbar-width:none; }

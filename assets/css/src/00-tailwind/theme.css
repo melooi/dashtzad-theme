@@ -1,0 +1,47 @@
+/* 00-tailwind/theme.css
+   Design tokens → Tailwind @theme (bg-green / text-ink / rounded-md / shadow-card / font-display …).
+   Unchanged values — single source of truth for the theme's utility palette. */
+@theme {
+  --color-paper:#ffffff;
+  --color-paper-2:#f5f5f4;
+  --color-surface-warm:#fafaf9;
+  --color-ink:#292524;
+  --color-ink-soft:#57534e;
+  --color-ink-faint:#78716c;
+  --color-hair:#e7e5e4;
+  --color-hair-strong:#d6d3d1;
+  --color-green:#15803d;
+  --color-green-deep:#166534;
+  --color-green-soft:#dcfce7;
+  --color-clay:#c2410c;
+  --color-clay-deep:#9a3412;
+  --color-clay-soft:#ffedd5;
+  --color-gold:#f59e0b;
+  --color-gold-deep:#b45309;
+  --color-honey:#fbbf24;
+  --color-amber-soft:#fef3c7;
+  --color-amber-50:#fffbeb;
+
+  --radius-sm:.8rem;
+  --radius-md:1.4rem;
+  --radius-lg:2.2rem;
+  --radius-xl:3rem;
+
+  --shadow-soft:0 1px 2px oklch(.3 .02 60 / .06), 0 2px 6px oklch(.3 .02 60 / .05);
+  --shadow-card:0 2px 6px oklch(.3 .02 60 / .06), 0 14px 34px oklch(.3 .02 60 / .09);
+  --shadow-pop:0 8px 20px oklch(.3 .02 60 / .08), 0 30px 70px oklch(.3 .02 60 / .14);
+
+  --font-display:'Kalameh', 'YekanBakh', system-ui, sans-serif;
+  --font-sans:'YekanBakh', system-ui, sans-serif;
+
+  /* type scale → text-xs … text-5xl utilities */
+  --text-xs:1.2rem;
+  --text-sm:1.4rem;
+  --text-base:1.6rem;
+  --text-lg:1.8rem;
+  --text-xl:2.2rem;
+  --text-2xl:2.8rem;
+  --text-3xl:3.6rem;
+  --text-4xl:4.8rem;
+  --text-5xl:6.4rem;
+}

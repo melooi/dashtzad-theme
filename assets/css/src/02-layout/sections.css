@@ -1,0 +1,3 @@
+/* 02-layout/sections.css
+   Section rhythm/spacing. Currently handled by Tailwind utilities inline
+   (py-[clamp(...)], border-y, bg-surface-warm). Add shared section rules here. */

@@ -1,0 +1,29 @@
+/* ============================================================
+   دشت‌زاد — Home (front-page) bespoke styles.
+   هوک‌های قالب (dz-*) — مقادیر وفادار به طراحی اصلی.
+   مقصد در قالب: assets/css/src/04-sections/{hero,reviews,journey}.css
+   (هنگام انتقال، هر بلوک به پارشال مربوطه‌اش می‌رود.)
+   ============================================================ */
+
+/* ---- HERO background + scrims (hero.css) ---- */
+.dz-hero-bg{ background:radial-gradient(120% 100% at 82% 8%, #244a31 0%, #1a3022 42%, #14241a 100%); }
+.dz-hero-scrim{ background:linear-gradient(to left, oklch(.15 .03 70 / .86) 0%, oklch(.15 .03 70 / .5) 46%, oklch(.15 .03 70 / .1) 100%); }
+.dz-scrim-up{ background:linear-gradient(to top, oklch(.18 .04 60 / .92) 8%, oklch(.2 .04 60 / .5) 46%, oklch(.2 .04 60 / .1) 100%); }
+
+/* ---- JOURNEY band deco + connector line (journey.css) ---- */
+.dz-home-journey__deco::before{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(120% 120% at 100% 0%, oklch(.55 .14 150 / .5), transparent 55%), radial-gradient(90% 90% at 0% 100%, oklch(.3 .05 150 / .55), transparent 60%); }
+.dz-home-journey__line::before{ content:""; position:absolute; inset-block-start:3.4rem; inset-inline:8%; height:2px; z-index:0;
+  background:repeating-linear-gradient(to left, oklch(1 0 0 / .32) 0 1rem, transparent 1rem 2rem); }
+@media (max-width:1080px){ .dz-home-journey__line::before{ display:none; } }
+
+/* ---- REVIEWS card-deck (reviews.css) — قرارداد JS در assets/js/app.js ---- */
+.dz-review-deck{ max-width:60rem; margin-inline:auto; margin-top:clamp(2rem,3vw,3rem); }
+.dz-review-deck__stage{ position:relative; touch-action:pan-y; }
+.dz-review-card{ position:absolute; inset-inline:0; top:0; margin:0; cursor:grab; user-select:none; box-shadow:var(--shadow);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1), opacity .45s ease, box-shadow .3s; will-change:transform; }
+.dz-review-card.is-front{ box-shadow:var(--shadow-lg); }
+.dz-review-card.is-front:active{ cursor:grabbing; }
+.dz-review-card__t{ min-height:9.6rem; }
+.dz-review-dot{ width:.9rem; height:.9rem; border-radius:999px; background:var(--hair-strong); transition:all .2s; padding:0; border:none; cursor:pointer; }
+.dz-review-dot.is-active{ background:var(--green); width:2.6rem; }

@@ -1,0 +1,4 @@
+/* 03-components/mega-menu.css
+   CSS-only mega-menu reveal driven by the .dz-mega group. */
+.dz-mega__panel{ opacity:0; visibility:hidden; transform:translateY(.8rem); transition:opacity .18s, transform .18s, visibility .18s; }
+.dz-mega:hover .dz-mega__panel, .dz-mega:focus-within .dz-mega__panel{ opacity:1; visibility:visible; transform:translateY(0); }

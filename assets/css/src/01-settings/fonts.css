@@ -1,0 +1,18 @@
+/* 01-settings/fonts.css
+   Self-hosted webfonts (woff2). url() paths are relative to THIS file
+   (assets/css/src/01-settings/) — Tailwind v4 rewrites them against the
+   declaring file when bundling into ../../tailwind.css. */
+
+/* Yekan Bakh — body/sans */
+@font-face { font-family:'YekanBakh'; font-weight:100; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-Thin.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:300; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-Light.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:400; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-Regular.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:600; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-SemiBold.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:700; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-Bold.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:800; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-ExtraBold.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:900; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-Black.woff2') format('woff2'); }
+@font-face { font-family:'YekanBakh'; font-weight:950; font-style:normal; font-display:swap; src:url('../../../fonts/yekan-bakh/YekanBakhNoEn-ExtraBlack.woff2') format('woff2'); }
+
+/* Kalameh — display/headings */
+@font-face { font-family:'Kalameh'; font-weight:400; font-style:normal; font-display:swap; src:url('../../../fonts/kalameh/KalamehWebNoEn-Regular.woff2') format('woff2'); }
+@font-face { font-family:'Kalameh'; font-weight:700; font-style:normal; font-display:swap; src:url('../../../fonts/kalameh/KalamehWebNoEn-Bold.woff2') format('woff2'); }

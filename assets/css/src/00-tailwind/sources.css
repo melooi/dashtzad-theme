@@ -1,0 +1,11 @@
+/* 00-tailwind/sources.css
+   Explicit content sources for source(none).
+   Paths are relative to THIS file (assets/css/src/00-tailwind/) — Tailwind v4
+   rewrites import-relative paths against the file that declares them.
+   Covers every theme PHP dir + JS so utility classes are never purged. */
+@source "../../../../*.php";
+@source "../../../../inc/**/*.php";
+@source "../../../../components/**/*.php";
+@source "../../../../template-parts/**/*.php";
+@source "../../../../woocommerce/**/*.php";
+@source "../../../js/**/*.js";

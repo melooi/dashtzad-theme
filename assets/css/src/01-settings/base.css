@@ -1,0 +1,43 @@
+/* 01-settings/base.css
+   Document base + global type scale.
+
+   The type rules live in @layer base on purpose: Tailwind's utilities layer
+   wins over base, so a deliberate inline text-[…] still overrides per element,
+   while these set the standardized, professional defaults. Headings (h1/h2/h3)
+   follow the scale by default now that the old inline text-[clamp(…)] overrides
+   were removed from the templates. */
+
+html{ font-size:62.5%; }
+
+@layer base {
+  body{
+    font-family:'YekanBakh', system-ui, sans-serif;
+    font-size:clamp(1.5rem, 1.45rem + 0.25vw, 1.7rem);
+    line-height:1.8;
+    font-weight:400;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  h1, h2, h3, .dz-display{
+    font-family:'Kalameh', 'YekanBakh', system-ui, sans-serif;
+    font-weight:700;
+    line-height:1.25;
+  }
+  h1{ font-size:clamp(3.2rem, 2.4rem + 3vw, 6.4rem); letter-spacing:-0.02em; }
+  h2{ font-size:clamp(2.4rem, 2rem + 1.6vw, 4rem);   letter-spacing:-0.015em; }
+  h3{ font-size:clamp(2rem, 1.8rem + 0.8vw, 2.8rem); }
+
+  p{ font-size:clamp(1.5rem, 1.45rem + 0.2vw, 1.7rem); line-height:1.9; }
+
+  small, .dz-text-small{ font-size:1.3rem; line-height:1.7; }
+
+  button, input, select, textarea{
+    font-family:'YekanBakh', system-ui, sans-serif;
+    font-size:1.5rem;
+  }
+}
+
+/* tabular numerals for prices/figures (helper — stays out of @layer so it wins) */
+.num, .price, .dz-price{ font-variant-numeric:tabular-nums; }

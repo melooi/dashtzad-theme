@@ -1,0 +1,7 @@
+/* 04-sections/footer-main.css
+   Store footer (template-parts/footer/footer-main.php + footer-links +
+   footer-trust). Layout via Tailwind utilities inline; bespoke rules only.
+
+   Markup hooks: .dz-footer-main */
+
+/* Reserved for store-footer-specific tweaks. Chrome is utility-composed. */

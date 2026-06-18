@@ -1,0 +1,101 @@
+/* ============================================================
+   collection.css — لندینگِ کالکشن مناسبتی (هوک‌های dz-coll-* و dz-bundle)
+   نسخه‌ی مرجع wp/css/. هنگام انتقال → assets/css/src/04-sections/collection.css
+   rem base: html = 62.5% → 1rem = 10px
+   ------------------------------------------------------------
+   نگاشت توکن: نام‌های این فایل (display و r و shadow) به سیستم توکنِ قالب.
+   نکته: dz-crumb مشترک است و در category.css تعریف شده؛ هنگام انتقال،
+   استایل breadcrumb یک‌بار در یک فایل مشترک نگه‌داری شود.
+   ============================================================ */
+:root{
+  --display:'Kalameh','YekanBakh',system-ui,sans-serif;
+  --r-sm:.8rem; --r:1.4rem; --r-lg:2.2rem; --r-xl:3rem;
+  --shadow-sm:0 1px 2px oklch(.3 .02 60 / .06), 0 2px 6px oklch(.3 .02 60 / .05);
+  --shadow:0 2px 6px oklch(.3 .02 60 / .06), 0 14px 34px oklch(.3 .02 60 / .09);
+  --shadow-lg:0 8px 20px oklch(.3 .02 60 / .08), 0 30px 70px oklch(.3 .02 60 / .14);
+}
+
+/* ---------- breadcrumb (مشترک — تکرار برای استقلال پیش‌نمایش) ---------- */
+.dz-crumb{ border-bottom:1px solid var(--hair); background:var(--paper); }
+.dz-crumb__list{ display:flex; flex-wrap:wrap; align-items:center; gap:.9rem; list-style:none; margin:0;
+  padding:1.3rem 0; font-size:1.35rem; color:var(--ink-faint); }
+.dz-crumb__list a{ color:var(--ink-soft); text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:color .15s; }
+.dz-crumb__list a:hover{ color:var(--green); }
+.dz-crumb__list i{ font-size:1rem; color:var(--hair-strong); }
+.dz-crumb__list li[aria-current]{ color:var(--ink); font-weight:700; }
+
+/* ---------- editorial hero ---------- */
+.dz-coll-hero{ position:relative; min-height:clamp(42rem,60vh,56rem); display:flex; align-items:flex-end;
+  overflow:hidden; border-bottom:1px solid var(--hair); }
+.dz-coll-hero__bg{ position:absolute; inset:0; }
+.dz-coll-hero__scrim{ position:absolute; inset:0;
+  background:linear-gradient(to top, oklch(.16 .03 70 / .94) 6%, oklch(.18 .03 70 / .55) 46%, oklch(.18 .03 70 / .12) 100%); }
+.dz-coll-hero__inner{ position:relative; z-index:2; width:100%; color:#fff; padding-block:clamp(3rem,5vw,5.4rem); }
+.dz-coll-hero__badge{ display:inline-flex; align-items:center; gap:.7rem; font-weight:700; font-size:1.3rem;
+  letter-spacing:.02em; color:#fff; background:oklch(1 0 0 / .15); border:1.5px solid oklch(1 0 0 / .34);
+  border-radius:999px; padding:.8rem 1.6rem; backdrop-filter:blur(3px); }
+.dz-coll-hero__title{ font-family:var(--display); font-weight:900; font-size:clamp(3.2rem,2rem + 3.6vw,6rem);
+  line-height:1.08; letter-spacing:-.02em; margin:1.8rem 0 0; max-width:24ch; text-wrap:balance;
+  text-shadow:0 2px 34px oklch(.15 .03 70 / .55); }
+.dz-coll-hero__sub{ font-size:clamp(1.55rem,1.9vw,1.9rem); line-height:1.9; color:oklch(1 0 0 / .9);
+  margin:1.6rem 0 0; max-width:54rem; }
+.dz-coll-hero__stats{ display:flex; align-items:center; flex-wrap:wrap; gap:1rem 1.4rem; margin-top:2rem;
+  font-size:1.4rem; color:oklch(1 0 0 / .88); }
+.dz-coll-hero__stats b{ color:#fff; font-weight:800; }
+.dz-coll-hero__dot{ width:.5rem; height:.5rem; border-radius:999px; background:oklch(1 0 0 / .4); }
+.dz-coll-hero__cta{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:2.6rem; }
+
+/* ---------- buttons ---------- */
+.dz-btn{ font-family:inherit; font-weight:700; border-radius:var(--r-sm); cursor:pointer; text-decoration:none;
+  display:inline-flex; align-items:center; justify-content:center; gap:.8rem; border:1.5px solid transparent;
+  transition:all .15s; }
+.dz-btn--solid{ background:var(--green); color:#fff; font-size:1.6rem; padding:1.5rem 2.6rem;
+  box-shadow:0 6px 18px color-mix(in oklch,var(--green),transparent 70%); }
+.dz-btn--solid:hover{ background:var(--green-deep); }
+.dz-btn--clear{ background:oklch(1 0 0 / .12); border-color:oklch(1 0 0 / .5); color:#fff; font-size:1.6rem; padding:1.5rem 2.6rem; }
+.dz-btn--clear:hover{ background:#fff; color:var(--green-deep); border-color:#fff; }
+.dz-btn--honey{ background:var(--honey); color:var(--ink); font-size:1.6rem; padding:1.5rem 2.6rem; }
+.dz-btn--honey:hover{ background:var(--gold); }
+
+/* ---------- intro story ---------- */
+.dz-coll-intro{ padding:clamp(3.6rem,5vw,5.6rem) 0; }
+.dz-coll-intro__grid{ display:grid; grid-template-columns:1fr; gap:clamp(2.4rem,4vw,4.4rem); align-items:center; }
+@media (min-width:64rem){ .dz-coll-intro__grid{ grid-template-columns:1.08fr .92fr; } }
+.dz-coll-intro__media{ order:-1; }
+@media (min-width:64rem){ .dz-coll-intro__media{ order:0; } }
+.dz-coll-feats{ list-style:none; margin:2rem 0 0; padding:0; display:flex; flex-direction:column; gap:1.1rem; }
+.dz-coll-feats li{ display:flex; align-items:center; gap:1rem; font-size:1.5rem; font-weight:600; color:var(--ink); }
+.dz-coll-feats i{ width:3.6rem; height:3.6rem; border-radius:var(--r-sm); display:grid; place-items:center; flex:none;
+  background:var(--green-soft); color:var(--green-deep); font-size:1.5rem; }
+
+/* ---------- bundles band ---------- */
+.dz-coll-band{ padding:clamp(4rem,6vw,6.4rem) 0; background:var(--surface-warm); border-block:1px solid var(--hair); }
+.dz-bundle{ display:flex; flex-direction:column; background:var(--paper); border:1px solid var(--hair); border-radius:var(--r-lg);
+  overflow:hidden; text-decoration:none; transition:all .2s; }
+.dz-bundle:hover{ border-color:var(--green); box-shadow:var(--shadow); transform:translateY(-.4rem); }
+.dz-bundle__media{ position:relative; height:18rem; }
+.dz-bundle__icon{ position:absolute; inset-block-end:-2.2rem; inset-inline-start:1.8rem; width:5.6rem; height:5.6rem;
+  border-radius:var(--r); display:grid; place-items:center; font-size:2.4rem; box-shadow:var(--shadow);
+  border:3px solid #fff; }
+.dz-bundle__body{ padding:3rem 2rem 2.2rem; display:flex; flex-direction:column; gap:.8rem; flex:1; }
+.dz-bundle__count{ display:inline-flex; align-items:center; gap:.5rem; font-weight:700; font-size:1.25rem; color:var(--clay); }
+.dz-bundle__name{ font-family:var(--display); font-weight:700; font-size:2rem; }
+.dz-bundle__name{ transition:color .15s; }
+.dz-bundle:hover .dz-bundle__name{ color:var(--green-deep); }
+.dz-bundle__desc{ color:var(--ink-soft); font-size:1.4rem; line-height:1.75; }
+.dz-bundle__foot{ display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:auto;
+  padding-top:1.4rem; border-top:1px solid var(--hair); }
+.dz-bundle__price{ font-family:var(--display); font-weight:700; font-size:1.85rem; color:var(--ink); }
+.dz-bundle__t{ font-size:1.1rem; color:var(--ink-faint); font-weight:600; }
+.dz-bundle__go{ display:inline-flex; align-items:center; gap:.6rem; font-weight:700; font-size:1.35rem; color:var(--green); }
+.dz-bundle:hover .dz-bundle__go{ gap:1rem; }
+
+/* ---------- gifting CTA ---------- */
+.dz-coll-cta-wrap{ padding:0 0 clamp(4rem,6vw,6.4rem); }
+.dz-coll-cta{ position:relative; overflow:hidden; border-radius:var(--r-xl); background:var(--green-deep); color:#fff;
+  padding:clamp(2.8rem,4vw,4.4rem); display:grid; grid-template-columns:1fr; gap:clamp(2rem,3vw,3rem); align-items:center; }
+@media (min-width:64rem){ .dz-coll-cta{ grid-template-columns:1.4fr 1fr; } }
+.dz-coll-cta::before{ content:""; position:absolute; inset:0; pointer-events:none; background:
+  radial-gradient(120% 120% at 100% 0%, oklch(.55 .14 150 / .5), transparent 55%),
+  radial-gradient(90% 90% at 0% 100%, oklch(.3 .05 150 / .55), transparent 60%); }
+.dz-coll-cta__btns{ position:relative; display:flex; flex-wrap:wrap; gap:1.2rem; }

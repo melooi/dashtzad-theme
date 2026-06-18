@@ -1,0 +1,98 @@
+/* ============================= صفحه ورود ============================= */
+.dz-login-screen{
+  display:flex; align-items:center; justify-content:center;
+  min-height:calc(100vh - 20rem); padding:4rem 2rem 8rem;
+  background:var(--surface-warm);
+}
+.dz-login-card{
+  background:var(--paper); border-radius:var(--r-xl);
+  box-shadow:var(--shadow-lg); width:min(46rem,100%);
+  padding:clamp(2.4rem,5vw,4rem);
+}
+/* برند */
+.dz-lc-brand{
+  display:flex; align-items:center; gap:1.4rem;
+  margin-bottom:3rem; padding-bottom:2.4rem;
+  border-bottom:.1rem solid var(--hair);
+}
+.dz-lc-seal{
+  width:5rem; height:5rem; border-radius:50%;
+  background:var(--green); color:var(--paper);
+  display:grid; place-items:center;
+  font-family:var(--font-display); font-weight:800; font-size:2.2rem;
+  border:.2rem solid var(--gold); flex:0 0 auto;
+}
+.dz-lc-name{ font-family:var(--font-display); font-weight:800; font-size:2.2rem; line-height:1.2; }
+.dz-lc-tag{ font-size:1.25rem; color:var(--ink-faint); margin-top:.2rem; }
+/* تب‌ها */
+.dz-tabs{
+  display:flex; background:var(--surface-warm);
+  border-radius:var(--r); padding:.4rem; gap:.4rem; margin-bottom:2rem;
+}
+.dz-tab{
+  flex:1; padding:1rem; font-weight:700; font-size:1.45rem;
+  border-radius:calc(var(--r) - .2rem);
+  border:none; cursor:pointer; transition:all .15s;
+  background:transparent; color:var(--ink-faint);
+  font-family:inherit; display:flex; align-items:center; justify-content:center; gap:.6rem;
+}
+.dz-tab.is-active{ background:#fff; color:var(--green-deep); box-shadow:var(--shadow-sm); }
+.dz-tab:hover:not(.is-active){ color:var(--ink-soft); }
+/* گام‌ها */
+.dz-lc-step{ display:flex; flex-direction:column; gap:1.4rem; }
+.dz-lc-step[hidden]{ display:none; }
+.dz-lc-title{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.2rem,2vw,2.6rem); color:var(--ink); margin:0; }
+.dz-lc-sub{ font-size:1.4rem; color:var(--ink-soft); line-height:1.85; margin:0; }
+/* فیلد موبایل */
+.dz-lc-phonewrap{
+  display:flex; align-items:center; gap:1.2rem;
+  border:.15rem solid var(--hair-strong); border-radius:var(--r);
+  padding:1.3rem 1.6rem; background:var(--surface-warm);
+  transition:border-color .15s, background .15s, box-shadow .15s;
+}
+.dz-lc-phonewrap:focus-within{
+  border-color:var(--green); background:var(--paper);
+  box-shadow:0 0 0 .3rem color-mix(in oklch, var(--green), transparent 86%);
+}
+.dz-lc-phonewrap i{ color:var(--ink-faint); font-size:1.8rem; flex:0 0 auto; }
+.dz-lc-phonewrap input{ flex:1; border:none; outline:none; background:transparent; font-family:inherit; font-size:1.7rem; color:var(--ink); direction:ltr; text-align:right; }
+.dz-lc-phonewrap input::placeholder{ color:var(--ink-faint); }
+/* فیلد عمومی */
+.dz-lc-field{
+  display:flex; align-items:center; gap:1.2rem;
+  border:.15rem solid var(--hair-strong); border-radius:var(--r);
+  padding:1.3rem 1.6rem; background:var(--surface-warm);
+  transition:border-color .15s, background .15s;
+}
+.dz-lc-field:focus-within{
+  border-color:var(--green); background:var(--paper);
+  box-shadow:0 0 0 .3rem color-mix(in oklch, var(--green), transparent 86%);
+}
+.dz-lc-field i{ color:var(--ink-faint); font-size:1.7rem; flex:0 0 auto; }
+.dz-lc-field input{ flex:1; border:none; outline:none; background:transparent; font-family:inherit; font-size:1.6rem; color:var(--ink); }
+.dz-lc-field input::placeholder{ color:var(--ink-faint); }
+/* جداکننده */
+.dz-lc-divider{ text-align:center; font-size:1.3rem; color:var(--ink-faint); position:relative; padding:.2rem 0; }
+.dz-lc-divider::before,.dz-lc-divider::after{ content:""; position:absolute; top:50%; width:43%; height:.1rem; background:var(--hair-strong); }
+.dz-lc-divider::before{ inset-inline-end:0; } .dz-lc-divider::after{ inset-inline-start:0; }
+/* قانونی */
+.dz-lc-legal{ font-size:1.25rem; color:var(--ink-faint); text-align:center; line-height:1.8; margin:0; }
+.dz-lc-legal a{ color:var(--green); font-weight:700; text-decoration:none; }
+/* خطا */
+.dz-field__err{ font-size:1.25rem; font-weight:700; color:var(--clay); min-height:1.6rem; text-align:center; margin:0; }
+/* اکو موبایل */
+.dz-lc-echowrap{ display:flex; align-items:center; gap:1rem; background:var(--surface-warm); border:.1rem solid var(--hair); border-radius:var(--r); padding:1.2rem 1.6rem; font-size:1.4rem; color:var(--ink-soft); }
+.dz-lc-echowrap i{ color:var(--green); font-size:1.6rem; }
+.dz-lc-echowrap b{ color:var(--ink); font-weight:700; direction:ltr; unicode-bidi:embed; }
+.dz-lc-echowrap button{ margin-inline-start:auto; font-family:inherit; font-size:1.3rem; font-weight:700; color:var(--green); background:none; border:none; cursor:pointer; }
+/* OTP */
+.dz-otp{ display:flex; gap:.9rem; justify-content:center; direction:ltr; }
+.dz-otp input{ width:5.2rem; height:6rem; text-align:center; font-family:var(--font-display); font-weight:700; font-size:2.4rem; color:var(--ink); background:var(--surface-warm); border:.15rem solid var(--hair-strong); border-radius:var(--r); outline:none; transition:border-color .15s, background .15s, box-shadow .15s; }
+.dz-otp input:focus{ border-color:var(--green); background:var(--paper); box-shadow:0 0 0 .3rem color-mix(in oklch, var(--green), transparent 86%); }
+.dz-otp input.is-filled{ border-color:var(--green); }
+/* تایمر */
+.dz-resend-row{ display:flex; align-items:center; justify-content:space-between; font-size:1.35rem; color:var(--ink-faint); }
+.dz-resend-row button{ font-family:inherit; font-size:1.35rem; font-weight:700; color:var(--green); background:none; border:none; cursor:pointer; }
+.dz-resend-row button:disabled{ color:var(--ink-faint); cursor:default; }
+/* بازیابی رمز */
+.dz-forgot-wrap{ background:var(--surface-warm); border:.15rem solid var(--hair-strong); border-radius:var(--r); padding:1.4rem; display:flex; flex-direction:column; gap:1rem; }

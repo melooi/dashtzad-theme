@@ -1,0 +1,117 @@
+/* ============================================================
+   bulk-order.css — صفحه‌ی خرید عمده (هوک‌های dz-lead-* / dz-tier / dz-step / dz-quote)
+   نسخه‌ی مرجع wp/css/. هنگام انتقال → assets/css/src/04-sections/bulk-order.css
+   rem base: html = 62.5% → 1rem = 10px
+   ------------------------------------------------------------
+   نگاشت توکن: نام‌های این فایل (display و r و shadow) به سیستم توکنِ قالب.
+   ============================================================ */
+:root{
+  --display:'Kalameh','YekanBakh',system-ui,sans-serif;
+  --r-sm:.8rem; --r:1.4rem; --r-lg:2.2rem; --r-xl:3rem;
+  --shadow-sm:0 1px 2px oklch(.3 .02 60 / .06), 0 2px 6px oklch(.3 .02 60 / .05);
+  --shadow:0 2px 6px oklch(.3 .02 60 / .06), 0 14px 34px oklch(.3 .02 60 / .09);
+  --shadow-lg:0 8px 20px oklch(.3 .02 60 / .08), 0 30px 70px oklch(.3 .02 60 / .14);
+  --hdr-h:18rem;
+}
+
+/* ---------- buttons (مشترک در صفحات لید) ---------- */
+.dz-btn{ font-family:inherit; font-weight:700; border-radius:var(--r-sm); cursor:pointer; text-decoration:none;
+  display:inline-flex; align-items:center; justify-content:center; gap:.8rem; border:1.5px solid transparent; transition:all .15s; }
+.dz-btn.w-full{ width:100%; }
+.dz-btn--solid{ background:var(--green); color:#fff; font-size:1.6rem; padding:1.4rem 2.4rem;
+  box-shadow:0 6px 18px color-mix(in oklch,var(--green),transparent 70%); }
+.dz-btn--solid:hover{ background:var(--green-deep); }
+.dz-btn--clear{ background:oklch(1 0 0 / .12); border-color:oklch(1 0 0 / .5); color:#fff; font-size:1.6rem; padding:1.4rem 2.4rem; }
+.dz-btn--clear:hover{ background:#fff; color:var(--green-deep); border-color:#fff; }
+.dz-btn--outline{ background:var(--paper); color:var(--ink); border-color:var(--hair-strong); font-size:1.5rem; padding:1.3rem 2rem; }
+.dz-btn--outline:hover{ border-color:var(--green); color:var(--green); }
+
+/* ---------- lead hero (مشترک با corporate-gifts) ---------- */
+.dz-lead-hero{ position:relative; overflow:hidden; background:var(--green-deep); color:#fff;
+  padding:clamp(3rem,4.5vw,4.8rem) 0 clamp(3.2rem,5vw,5.2rem); }
+.dz-lead-hero::before{ content:""; position:absolute; inset:0; pointer-events:none; background:
+  radial-gradient(110% 130% at 100% 0%, oklch(.55 .14 150 / .5), transparent 56%),
+  radial-gradient(90% 110% at 0% 100%, oklch(.3 .05 150 / .55), transparent 60%); }
+.dz-lead-hero__inner{ position:relative; max-width:74rem; }
+.dz-lead-hero__kicker{ display:inline-flex; align-items:center; gap:.7rem; font-weight:700; font-size:1.3rem;
+  letter-spacing:.03em; color:var(--honey); }
+.dz-lead-hero__title{ font-family:var(--display); font-weight:900; font-size:clamp(3rem,2rem + 2.6vw,5.2rem);
+  line-height:1.14; letter-spacing:-.01em; margin:1.4rem 0 0; text-wrap:balance; }
+.dz-lead-hero__sub{ font-size:clamp(1.55rem,1.8vw,1.85rem); line-height:1.95; color:oklch(1 0 0 / .88); margin:1.6rem 0 0; }
+.dz-lead-hero__cta{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:2.4rem; }
+.dz-lead-hero__stats{ display:flex; align-items:center; flex-wrap:wrap; gap:1rem 1.4rem; margin-top:2.4rem;
+  font-size:1.4rem; color:oklch(1 0 0 / .88); }
+.dz-lead-hero__stats b{ color:#fff; font-weight:800; }
+.dz-lead-hero__dot{ width:.5rem; height:.5rem; border-radius:999px; background:oklch(1 0 0 / .4); }
+
+/* ---------- audiences ---------- */
+.dz-aud-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.2rem,1.8vw,1.8rem); }
+@media (min-width:48rem){ .dz-aud-grid{ grid-template-columns:repeat(4,1fr); } }
+.dz-aud{ display:flex; align-items:center; gap:1.2rem; background:var(--paper); border:1px solid var(--hair);
+  border-radius:var(--r); padding:1.6rem 1.8rem; transition:all .15s; }
+.dz-aud:hover{ border-color:var(--green); box-shadow:var(--shadow-sm); }
+.dz-aud__ic{ width:4.6rem; height:4.6rem; border-radius:var(--r-sm); display:grid; place-items:center; flex:none;
+  background:var(--green-soft); color:var(--green-deep); font-size:1.9rem; }
+.dz-aud__l{ font-family:var(--display); font-weight:700; font-size:1.6rem; line-height:1.4; }
+
+/* ---------- tiered pricing ---------- */
+.dz-tier-grid{ display:grid; grid-template-columns:1fr; gap:clamp(1.6rem,2.2vw,2.2rem); align-items:start; }
+@media (min-width:56rem){ .dz-tier-grid{ grid-template-columns:repeat(3,1fr); } }
+.dz-tier{ position:relative; display:flex; flex-direction:column; gap:.6rem; background:var(--paper); border:1.5px solid var(--hair);
+  border-radius:var(--r-lg); padding:2.6rem 2.2rem; transition:all .2s; }
+.dz-tier:hover{ box-shadow:var(--shadow); transform:translateY(-.3rem); }
+.dz-tier.is-featured{ border-color:var(--green); box-shadow:var(--shadow); }
+@media (min-width:56rem){ .dz-tier.is-featured{ transform:scale(1.04); } .dz-tier.is-featured:hover{ transform:scale(1.04) translateY(-.3rem); } }
+.dz-tier__flag{ position:absolute; inset-block-start:-1.3rem; inset-inline-start:50%; transform:translateX(50%);
+  display:inline-flex; align-items:center; gap:.5rem; font-weight:700; font-size:1.2rem; color:#fff; background:var(--green);
+  border-radius:999px; padding:.5rem 1.4rem; white-space:nowrap; }
+.dz-tier__name{ font-family:var(--display); font-weight:700; font-size:2rem; }
+.dz-tier__range{ font-size:1.4rem; color:var(--ink-faint); font-weight:600; }
+.dz-tier__off{ display:flex; align-items:baseline; gap:.6rem; margin:1.2rem 0; }
+.dz-tier__off .num{ font-family:var(--display); font-weight:900; font-size:clamp(3.2rem,4vw,4.4rem); color:var(--green-deep); line-height:1; }
+.dz-tier__off-l{ font-size:1.5rem; color:var(--ink-soft); font-weight:700; }
+.dz-tier__feats{ list-style:none; margin:0 0 2rem; padding:1.4rem 0 0; border-top:1px solid var(--hair); display:flex;
+  flex-direction:column; gap:1rem; }
+.dz-tier__feats li{ display:flex; align-items:center; gap:.9rem; font-size:1.45rem; color:var(--ink); }
+.dz-tier__feats i{ color:var(--green); font-size:1.3rem; flex:none; }
+.dz-tier__cta{ margin-top:auto; }
+
+/* ---------- steps ---------- */
+.dz-steps{ display:grid; grid-template-columns:1fr; gap:clamp(1.6rem,2.4vw,2.4rem); }
+@media (min-width:40rem){ .dz-steps{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:64rem){ .dz-steps{ grid-template-columns:repeat(4,1fr); } }
+.dz-step{ position:relative; background:var(--paper); border:1px solid var(--hair); border-radius:var(--r-lg); padding:2.4rem 2rem; }
+.dz-step__n{ position:absolute; inset-block-start:1.6rem; inset-inline-end:1.8rem; font-family:var(--display); font-weight:900;
+  font-size:3.6rem; color:var(--hair-strong); line-height:1; }
+.dz-step__ic{ width:5.2rem; height:5.2rem; border-radius:var(--r-sm); display:grid; place-items:center;
+  background:var(--green-soft); color:var(--green-deep); font-size:2rem; margin-bottom:1.4rem; }
+.dz-step__t{ font-family:var(--display); font-weight:700; font-size:1.8rem; }
+.dz-step__d{ color:var(--ink-soft); font-size:1.4rem; line-height:1.8; margin-top:.7rem; }
+
+/* ---------- quote form ---------- */
+.dz-quote{ position:relative; overflow:hidden; border-radius:var(--r-xl); display:grid; grid-template-columns:1fr; }
+@media (min-width:64rem){ .dz-quote{ grid-template-columns:1fr 1.1fr; } }
+.dz-quote__intro{ position:relative; overflow:hidden; background:var(--green-deep); color:#fff; padding:clamp(2.6rem,4vw,4rem); }
+.dz-quote__intro::before{ content:""; position:absolute; inset:0; pointer-events:none; background:
+  radial-gradient(120% 120% at 100% 0%, oklch(.55 .14 150 / .5), transparent 55%),
+  radial-gradient(90% 90% at 0% 100%, oklch(.3 .05 150 / .55), transparent 60%); }
+.dz-quote__list{ list-style:none; margin:2rem 0 0; padding:0; display:flex; flex-direction:column; gap:1rem; position:relative; }
+.dz-quote__list li{ display:flex; align-items:center; gap:.9rem; font-size:1.45rem; color:oklch(1 0 0 / .9); }
+.dz-quote__list i{ color:var(--honey); }
+.dz-quote__form{ background:var(--paper); border:1px solid var(--hair); border-top:none; padding:clamp(2.4rem,3.5vw,3.4rem);
+  display:flex; flex-direction:column; gap:1.4rem; }
+@media (min-width:64rem){ .dz-quote__form{ border-top:1px solid var(--hair); border-inline-start:none; } }
+.dz-form-row{ display:grid; grid-template-columns:1fr; gap:1.4rem; }
+@media (min-width:40rem){ .dz-form-row{ grid-template-columns:1fr 1fr; } }
+.dz-field{ display:flex; flex-direction:column; gap:.7rem; }
+.dz-field label{ font-weight:700; font-size:1.4rem; color:var(--ink); }
+.dz-field .req{ color:var(--clay); }
+.dz-field input,.dz-field select,.dz-field textarea{ font-family:inherit; font-size:1.5rem; color:var(--ink);
+  background:var(--surface-warm); border:1.5px solid var(--hair-strong); border-radius:var(--r-sm); padding:1.2rem 1.4rem;
+  outline:none; transition:border-color .15s; width:100%; }
+.dz-field input:focus,.dz-field select:focus,.dz-field textarea:focus{ border-color:var(--green); background:#fff; }
+.dz-field input::placeholder,.dz-field textarea::placeholder{ color:var(--ink-faint); }
+.dz-field textarea{ min-height:9rem; resize:vertical; line-height:1.8; }
+.dz-form-ok{ display:none; align-items:center; gap:.7rem; font-weight:700; font-size:1.4rem; color:var(--green-deep);
+  background:var(--green-soft); border-radius:var(--r-sm); padding:1.2rem 1.4rem; }
+.dz-form-ok.show{ display:flex; }

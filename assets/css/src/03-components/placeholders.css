@@ -1,0 +1,6 @@
+/* 03-components/placeholders.css
+   Image placeholder texture (.dz-placeholder) + monospace caption (__label). */
+.dz-placeholder{ position:relative; overflow:hidden; display:grid; place-items:center; background-color:var(--surface-warm);
+  background-image:repeating-linear-gradient(135deg, transparent 0 1.1rem, color-mix(in oklch, var(--hair-strong), transparent 40%) 1.1rem 1.2rem); }
+.dz-placeholder__label{ color:var(--ink-faint); text-align:center; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:1.1rem;
+  letter-spacing:.04em; background:rgb(255 255 255 / .8); padding:.5rem 1rem; border-radius:.6rem; border:1px solid var(--hair); max-width:82%; line-height:1.5; }

@@ -1,0 +1,3 @@
+/* 02-layout/container.css
+   Page container width/gutters. Currently handled by Tailwind utilities inline
+   (mx-auto max-w-[124rem] px-[clamp(...)]). Add shared container rules here. */

@@ -1,0 +1,29 @@
+/* 04-sections/header-main.css
+   Store header (template-parts/header/header-main.php + shared nav partials).
+   Layout is composed from Tailwind utilities inline, so this file only holds
+   bespoke, non-utility rules. Mega-menu reveal → 03-components/mega-menu.css.
+
+   Markup hooks: .dz-header-main, .dz-nav, .dz-nav--desktop, .dz-nav--mobile */
+
+/* Responsive nav toggle — desktop vs mobile nav are separate partials shown
+   one at a time. Defined here in plain CSS (not Tailwind lg: utilities) so the
+   switch is self-contained and not tied to JIT class generation. Shared by
+   both the store and blog headers (the nav partials are common). lg = 64rem. */
+.dz-nav--desktop { display: none; }
+.dz-nav--mobile  { display: flex; }
+@media (min-width: 64rem) {
+  .dz-nav--desktop { display: flex; }
+  .dz-nav--mobile  { display: none; }
+}
+
+/* Belt-and-braces: keep the scrollable nav strips free of a visible scrollbar
+   even where the .dz-no-scroll utility is purged. */
+.dz-nav--desktop,
+.dz-nav--mobile {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.dz-nav--desktop::-webkit-scrollbar,
+.dz-nav--mobile::-webkit-scrollbar {
+  display: none;
+}

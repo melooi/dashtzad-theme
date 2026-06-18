@@ -1,0 +1,30 @@
+/* 01-settings/variables.css
+   Legacy :root custom properties consumed by the bespoke blocks (var(--green) …).
+   Kept alongside the Tailwind @theme tokens — both are needed. */
+:root{
+  --paper:#fff; --paper-2:#f5f5f4; --surface-warm:#fafaf9;
+  --ink:#292524; --ink-soft:#57534e; --ink-faint:#78716c;
+  --hair:#e7e5e4; --hair-strong:#d6d3d1;
+  --green:#15803d; --green-deep:#166534; --green-soft:#dcfce7;
+  --clay:#c2410c; --clay-deep:#9a3412; --clay-soft:#ffedd5;
+  --gold:#f59e0b; --gold-deep:#b45309; --honey:#fbbf24; --amber-soft:#fef3c7;
+  --star:#eaa12e; --danger:#dc2626; --strike:var(--ink-faint); --maxw:124rem;
+  --r-sm:.8rem; --r:1.4rem; --r-lg:2.2rem; --r-xl:3rem;
+  --shadow-sm:0 1px 2px oklch(.3 .02 60 / .06), 0 2px 6px oklch(.3 .02 60 / .05);
+  --shadow:0 2px 6px oklch(.3 .02 60 / .06), 0 14px 34px oklch(.3 .02 60 / .09);
+  --shadow-lg:0 8px 20px oklch(.3 .02 60 / .08), 0 30px 70px oklch(.3 .02 60 / .14);
+  --display:'Kalameh', 'YekanBakh', system-ui, sans-serif;
+
+  /* ---- سازگاری: نام‌های مستعارِ توکن‌های قدیمی → توکن مادر ----
+     چند نسل توکن در بلوک‌های قدیمی استفاده شده بود؛ این‌ها به توکن‌های مادر
+     نگاشت می‌شوند تا منبع رنگ/شعاع/سایه «یکدست» بماند و چیزی بی‌استایل نشود. */
+  --accent:var(--green); --accent-deep:var(--green-deep); --accent-soft:var(--green-soft);
+  --surface:var(--paper);
+  --font-display:var(--display);
+  /* پالت Tailwind که در account/404 ارجاع شده بود */
+  --color-stone-50:var(--surface-warm); --color-stone-100:var(--paper-2);
+  --color-stone-200:var(--hair); --color-stone-300:var(--hair-strong);
+  --color-stone-400:#a8a29e; --color-stone-500:var(--ink-faint);
+  --color-stone-600:var(--ink-soft); --color-stone-800:var(--ink);
+  --color-amber-100:var(--amber-soft); --color-orange-800:var(--clay-deep);
+}

@@ -1,0 +1,131 @@
+<?php
+/**
+ * Footer link columns: brand intro + social + three link columns.
+ *
+ * Shared chrome for both footers; only the copy and link lists switch by
+ * context, so the markup is never duplicated.
+ *
+ * @var array $args { context: 'main'|'blog' }
+ * @package Dashtzad
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$dz_context = ( isset( $args['context'] ) && 'blog' === $args['context'] ) ? 'blog' : 'main';
+
+if ( 'blog' === $dz_context ) {
+	$dz_intro = __( 'مجله دشت‌زاد؛ روایت یک نسل از ۱۳۰۵. دستورهای آشپزی، راهنمای خرید و فرهنگ غذایی ایران — از باغ خانوادگی تا سفره شما.', 'dashtzad' );
+	$dz_cols  = array(
+		array(
+			'title' => __( 'دسته‌بندی‌ها', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/blog/' ), __( 'برنج و پلو', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'خورشت‌های ایرانی', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'حبوبات', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'چای و دمنوش', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'خشکبار و آجیل', 'dashtzad' ) ),
+			),
+		),
+		array(
+			'title' => __( 'بخش‌های مجله', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/what-to-cook/' ), __( 'امروز چی بپزم؟', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'پرونده‌های ویژه', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'آموزش تصویری', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'فصل و مناسبت', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'پیشنهاد سردبیر', 'dashtzad' ) ),
+			),
+		),
+		array(
+			'title' => __( 'درباره دشت‌زاد', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/brand-story/' ), __( 'داستان ما', 'dashtzad' ) ),
+				array( '#', __( 'باغ‌های دماوند', 'dashtzad' ) ),
+				array( home_url( '/shop/' ), __( 'فروشگاه دشت‌زاد', 'dashtzad' ) ),
+				array( home_url( '/contact/' ), __( 'تماس با ما', 'dashtzad' ) ),
+				array( '#newsletter', __( 'عضویت در خبرنامه', 'dashtzad' ) ),
+			),
+		),
+	);
+} else {
+	$dz_intro = __( 'دشت‌زاد؛ روایت چهار نسل از ۱۳۰۵. برنج، حبوبات، خشکبار، چای، ادویه و آجیل مرغوب — از باغ خانوادگی تا سفره شما، بدون واسطه.', 'dashtzad' );
+	$dz_cols  = array(
+		array(
+			'title' => __( 'دسته‌بندی‌ها', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/shop/?cat=rice' ), __( 'برنج', 'dashtzad' ) ),
+				array( home_url( '/shop/?cat=legume' ), __( 'حبوبات', 'dashtzad' ) ),
+				array( home_url( '/shop/?cat=nuts' ), __( 'خشکبار', 'dashtzad' ) ),
+				array( home_url( '/shop/?cat=tea' ), __( 'چای و دمنوش', 'dashtzad' ) ),
+				array( home_url( '/shop/?cat=spice' ), __( 'ادویه و زعفران', 'dashtzad' ) ),
+				array( home_url( '/shop/?cat=ajil' ), __( 'آجیل', 'dashtzad' ) ),
+			),
+		),
+		array(
+			'title' => __( 'راهنما و پشتیبانی', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/faq/' ), __( 'پرسش‌های متداول', 'dashtzad' ) ),
+				array( home_url( '/terms/' ), __( 'قوانین و مقررات', 'dashtzad' ) ),
+				array( home_url( '/contact/' ), __( 'تماس با ما', 'dashtzad' ) ),
+				array( home_url( '/track-order/' ), __( 'پیگیری سفارش', 'dashtzad' ) ),
+				array( home_url( '/cart/' ), __( 'سبد خرید', 'dashtzad' ) ),
+			),
+		),
+		array(
+			'title' => __( 'درباره دشت‌زاد', 'dashtzad' ),
+			'links' => array(
+				array( home_url( '/brand-story/' ), __( 'داستان ما', 'dashtzad' ) ),
+				array( '#', __( 'باغ‌های دماوند', 'dashtzad' ) ),
+				array( home_url( '/shop/' ), __( 'فروشگاه دشت‌زاد', 'dashtzad' ) ),
+				array( home_url( '/blog/' ), __( 'مجله دشت‌زاد', 'dashtzad' ) ),
+			),
+		),
+	);
+}
+?>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[clamp(2.4rem,3vw,3.6rem)]">
+	<div class="sm:col-span-2 lg:col-span-1">
+		<?php
+		get_template_part(
+			'template-parts/header/shared-brand',
+			null,
+			array(
+				'link'       => false,
+				'wrap_class' => 'flex items-center gap-[1.1rem] mb-[1.6rem]',
+			)
+		);
+		?>
+		<p class="text-ink-soft text-[1.4rem] leading-[1.9] max-w-[34rem]"><?php echo esc_html( $dz_intro ); ?></p>
+		<div class="mt-[2rem]">
+			<span class="block text-ink-faint text-[1.2rem] font-bold mb-[1.1rem] tracking-[.03em]"><?php esc_html_e( 'دشت‌زاد در شبکه‌های اجتماعی:', 'dashtzad' ); ?></span>
+			<div class="flex items-center gap-[1.8rem]">
+				<a href="#" aria-label="<?php esc_attr_e( 'اینستاگرام', 'dashtzad' ); ?>" class="inline-flex items-center justify-center w-[2.6rem] h-[2.6rem] text-ink-soft text-[2.4rem] leading-none hover:text-green transition-colors duration-200"><i class="fa-brands fa-instagram"></i></a>
+				<a href="#" aria-label="<?php esc_attr_e( 'تلگرام', 'dashtzad' ); ?>" class="inline-flex items-center justify-center w-[2.6rem] h-[2.6rem] text-ink-soft text-[2.4rem] leading-none hover:text-green transition-colors duration-200"><i class="fa-brands fa-telegram"></i></a>
+				<a href="#" aria-label="<?php esc_attr_e( 'واتساپ', 'dashtzad' ); ?>" class="inline-flex items-center justify-center w-[2.6rem] h-[2.6rem] text-ink-soft text-[2.4rem] leading-none hover:text-green transition-colors duration-200"><i class="fa-brands fa-whatsapp"></i></a>
+				<a href="#" aria-label="<?php esc_attr_e( 'لینکدین', 'dashtzad' ); ?>" class="inline-flex items-center justify-center w-[2.6rem] h-[2.6rem] text-ink-soft text-[2.4rem] leading-none hover:text-green transition-colors duration-200"><i class="fa-brands fa-linkedin-in"></i></a>
+				<a href="#" aria-label="<?php esc_attr_e( 'بله', 'dashtzad' ); ?>" class="inline-flex items-center justify-center w-[2.6rem] h-[2.6rem] text-ink-soft hover:text-green transition-colors duration-200"><svg viewBox="0 0 42 42" class="w-[2.5rem] h-[2.5rem] block" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.6232 0.195914H23.5857C23.2734 0.145928 22.9611 0.120924 22.6488 0.0834079L22.3241 0.0584043L21.6371 0.0209091H19.7631L19.3259 0.0459127L18.9385 0.0709163L18.5013 0.120924L18.1141 0.158419L17.6894 0.220918L17.3146 0.283438L16.8899 0.358449L16.515 0.43344L16.0903 0.520963L15.728 0.608466L15.3158 0.720973L14.9535 0.820987L14.5412 0.946006L14.1915 1.05851L13.7917 1.19602L13.4419 1.32104L13.0422 1.48356L12.7048 1.62107L12.3051 1.79607L11.9803 1.9336L11.5805 2.13361L11.2682 2.28363L10.8809 2.49616L10.5811 2.65867L10.1814 2.8962L9.90654 3.05871L9.48179 3.32124L8.60732 3.92129C8.60732 3.92129 4.82211 1.046 3.31051 0.258434C2.96525 0.0774114 2.57912 -0.011212 2.18954 0.00113421C1.79995 0.0134805 1.42019 0.126402 1.08709 0.328922C0.753967 0.531442 0.478822 0.816692 0.288357 1.15699C0.0978932 1.49729 -0.0014368 1.88108 1.57039e-05 2.27112V20.7604C-0.00162355 26.0317 2.00131 31.1059 5.60218 34.9532C9.20306 38.8002 14.132 41.1321 19.3884 41.4749H19.5758L20.2003 41.5H21.7369C21.9242 41.5 22.0992 41.4751 22.2865 41.4624L22.7988 41.4251L23.3359 41.3624L23.8357 41.3L24.3603 41.2124L24.8599 41.1124C25.0349 41.0875 25.2098 41.0375 25.3847 40.9999L25.8719 40.8875L26.384 40.7499L26.8588 40.6123L27.3585 40.4498L27.8332 40.2874L28.3204 40.0998L28.7701 39.9124L29.2448 39.7124L29.6947 39.4997L30.1568 39.2748L30.594 39.0498L31.0439 38.7871L31.4686 38.5498L31.9058 38.2746L32.3181 38.0121L32.7302 37.7121L33.1301 37.4245C33.2687 37.3274 33.4021 37.223 33.5297 37.112L33.9171 36.812L34.3043 36.4746L34.6791 36.1621L35.0538 35.7994L35.3912 35.4744L35.7535 35.0994L36.0907 34.7494L36.4281 34.3618L36.7404 33.9993L37.0651 33.5868L37.3649 33.2116L37.6648 32.7867L37.9397 32.399C38.0395 32.249 38.1271 32.099 38.2269 31.9616L38.4894 31.5489C38.5767 31.3989 38.6643 31.2491 38.7392 31.0991C38.8141 30.949 38.9141 30.8239 38.989 30.6863L39.2264 30.2114L39.4511 29.7864C39.5263 29.6237 39.6012 29.4613 39.6636 29.2988C39.7261 29.1363 39.801 29.0112 39.8634 28.8612C39.9259 28.7111 40.0008 28.5238 40.0633 28.3611L40.2382 27.9237C40.3006 27.7486 40.3507 27.5736 40.4131 27.3985L40.5631 26.9486C40.6256 26.7735 40.6629 26.5859 40.7254 26.411C40.7879 26.2361 40.813 26.111 40.8503 25.9609C40.8879 25.8109 40.9379 25.586 40.9752 25.4109C41.0128 25.2359 41.0503 25.1108 41.0752 24.9608L41.1877 24.3734L41.2626 23.9357C41.3002 23.7233 41.3126 23.5232 41.3375 23.3108C41.3626 23.0983 41.3751 23.0356 41.4 22.8856C41.4251 22.7356 41.4375 22.4231 41.45 22.1857C41.4645 22.0695 41.4728 21.9527 41.4751 21.8356C41.4875 21.498 41.5 21.1604 41.5 20.823V20.7604C41.5 15.7515 39.6906 10.9113 36.4055 7.13212C33.1201 3.35294 28.5806 0.889525 23.6232 0.195914ZM32.8678 18.1102L20.8125 30.1614C20.0534 30.9202 19.0246 31.3464 17.9516 31.3464C16.8789 31.3464 15.8499 30.9202 15.0909 30.1614L8.63231 23.7108C7.93585 22.9375 7.56264 21.9261 7.58964 20.8853C7.61664 19.8447 8.04182 18.8541 8.77743 18.1179C9.51304 17.3819 10.503 16.9563 11.5429 16.9293C12.5829 16.9023 13.5935 17.2758 14.3663 17.9726L17.9516 21.5729L27.1337 12.3721C27.9065 11.6752 28.9172 11.3017 29.957 11.3287C30.997 11.3557 31.9869 11.7812 32.7225 12.5174C33.4581 13.2535 33.8833 14.2441 33.9103 15.2848C33.9375 16.3255 33.5642 17.3368 32.8678 18.1102Z" fill="currentColor"></path></svg></a>
+			</div>
+		</div>
+	</div>
+	<?php $dz_fi = 0; foreach ( $dz_cols as $dz_col ) : $dz_fi++; ?>
+		<div class="dz-facc group bg-paper border border-hair rounded-md shadow-soft overflow-hidden sm:bg-transparent sm:border-0 sm:rounded-none sm:shadow-none sm:overflow-visible">
+			<input type="checkbox" id="dz-facc-<?php echo esc_attr( $dz_fi ); ?>" class="peer sr-only" aria-hidden="true">
+			<h4 class="m-0">
+				<label for="dz-facc-<?php echo esc_attr( $dz_fi ); ?>" class="flex items-center gap-[1rem] cursor-pointer sm:cursor-default select-none py-[1.5rem] px-[1.6rem] sm:p-0 sm:mb-[1.4rem]">
+					<span class="order-last sm:hidden grid place-items-center w-[3rem] h-[3rem] rounded-full bg-surface-warm text-ink-faint text-[1.3rem] flex-none transition-all duration-200 group-has-[:checked]:bg-green group-has-[:checked]:text-white group-has-[:checked]:rotate-180"><i class="fa-solid fa-angle-down"></i></span>
+					<span class="hidden sm:block w-[.6rem] h-[.6rem] rounded-full bg-green flex-none"></span>
+					<span class="font-display font-bold text-[1.7rem] flex-1"><?php echo esc_html( $dz_col['title'] ); ?></span>
+				</label>
+			</h4>
+			<div class="overflow-hidden max-h-0 peer-checked:max-h-[44rem] sm:max-h-none transition-[max-height] duration-300 ease-out">
+				<ul class="flex flex-col gap-[1.1rem] px-[1.6rem] pt-[.2rem] pb-[1.8rem] sm:px-0 sm:pt-0 sm:pb-0">
+					<?php foreach ( $dz_col['links'] as $dz_link ) : ?>
+						<li><a href="<?php echo esc_url( $dz_link[0] ); ?>" class="text-ink-soft text-[1.4rem] hover:text-green transition-colors"><?php echo esc_html( $dz_link[1] ); ?></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	<?php endforeach; ?>
+</div>

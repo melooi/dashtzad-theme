@@ -1,0 +1,70 @@
+/* ============================================================
+   دشت‌زاد — Tailwind v4 entry. Build:
+     npm install && npm run build      (or: npm run dev to watch)
+   Output: assets/css/tailwind.css — local build only, no CDN.
+
+   This file is the ENTRY ONLY. It pulls Tailwind in, then imports the
+   modular partials under ./src in cascade order. Edit the partials,
+   not this file. Import order defines the final cascade — keep it.
+   ============================================================ */
+
+@import "tailwindcss" source(none);
+
+/* 00 · tailwind — content sources + design tokens */
+@import "./src/00-tailwind/sources.css";
+@import "./src/00-tailwind/theme.css";
+
+/* 01 · settings — fonts, variables, base */
+@import "./src/01-settings/fonts.css";
+@import "./src/01-settings/variables.css";
+@import "./src/01-settings/base.css";
+
+/* 02 · layout */
+@import "./src/02-layout/container.css";
+@import "./src/02-layout/sections.css";
+@import "./src/02-layout/responsive.css";
+
+/* 03 · components */
+@import "./src/03-components/buttons.css";
+@import "./src/03-components/badges.css";
+@import "./src/03-components/cards.css";
+@import "./src/03-components/forms.css";
+@import "./src/03-components/placeholders.css";
+@import "./src/03-components/mega-menu.css";
+@import "./src/03-components/bookmark.css";
+
+/* 04 · sections */
+@import "./src/04-sections/header-main.css";
+@import "./src/04-sections/header-blog.css";
+@import "./src/04-sections/header-mobile.css";
+@import "./src/04-sections/footer-main.css";
+@import "./src/04-sections/footer-blog.css";
+@import "./src/04-sections/hero.css";
+@import "./src/04-sections/reviews.css";
+@import "./src/04-sections/journey.css";
+@import "./src/04-sections/about.css";
+@import "./src/04-sections/product-card.css";
+@import "./src/04-sections/product-states.css";
+@import "./src/04-sections/home.css";
+@import "./src/04-sections/cart.css";
+@import "./src/04-sections/checkout.css";
+@import "./src/04-sections/contact.css";
+@import "./src/04-sections/faq.css";
+@import "./src/04-sections/login.css";
+@import "./src/04-sections/terms.css";
+@import "./src/04-sections/track.css";
+@import "./src/04-sections/payment-success.css";
+@import "./src/04-sections/payment-failed.css";
+@import "./src/04-sections/blog-home.css";
+@import "./src/04-sections/blog-single.css";
+@import "./src/04-sections/category.css";
+@import "./src/04-sections/collection.css";
+@import "./src/04-sections/account.css";
+@import "./src/04-sections/bulk-order.css";
+@import "./src/04-sections/corporate-gifts.css";
+@import "./src/04-sections/404.css";
+
+/* 99 · utilities */
+@import "./src/99-utilities/animations.css";
+@import "./src/99-utilities/helpers.css";
+@import "./src/99-utilities/no-scroll.css";

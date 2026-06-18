@@ -1,0 +1,14 @@
+{
+  "name": "dashtzad-theme",
+  "version": "1.0.0",
+  "description": "Dashtzad custom WordPress + WooCommerce theme (HTML + Tailwind v4, RTL).",
+  "private": true,
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch",
+    "build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "latest",
+    "tailwindcss": "latest"
+  }
+}

@@ -1,0 +1,128 @@
+/* ============================================================
+   contact.css — صفحه «تماس با ما» (هوک‌های contact-* / cf-* / link-card)
+   نسخه‌ی مرجع wp/css/. هنگام انتقال → assets/css/src/04-sections/contact.css
+   rem base: html = 62.5% → 1rem = 10px
+   ------------------------------------------------------------
+   منبع: contact.html + contact.css (ریشه). کلاس‌های faq-hero از faq.css
+   می‌آیند (در preview هر دو لود می‌شوند). استایل‌های مشترکِ .btn و .ph
+   که در منبع از blog.css می‌آمدند، این‌جا آورده شده‌اند تا صفحه مستقل کار کند.
+   نکته: استایل‌های support-*/track-*/bulk-* که در contact.css منبع بودند،
+   این‌جا نیامده‌اند چون مربوط به صفحات «پیگیری سفارش» و «خرید عمده» هستند.
+   ============================================================ */
+
+
+/* ============================================================
+   TYPE SCALE (canonical — یکدست با کل سایت)
+   H1/Hero    : Kalameh(var --display) · 900 · lh1.35 · 30→40→52px
+   H2/Section : Kalameh(var --display) · 800 · lh1.45 · 22→28px (form-card__h)
+   Body       : YekanBakh · lh2.1 · 14→15px
+   Description: YekanBakh · lh2 · 15→17px
+   Button     : YekanBakh · 700 · 14→15px
+   Kalameh فقط تیترهای اصلی؛ متن/فرم/دکمه با YekanBakh.
+   ============================================================ */
+
+/* shared: buttons (معادل blog.css) */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.9rem; font-weight:700; font-family:inherit; cursor:pointer; border:none;
+  border-radius:var(--r); font-size:clamp(1.4rem,1.35rem + .15vw,1.5rem); padding:1.35rem 2.2rem;
+  transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s, border-color .2s; }
+.btn:active{ transform:translateY(1px); }
+.btn--primary{ background:var(--green); color:#fff; box-shadow:0 6px 18px color-mix(in oklch, var(--green), transparent 72%); }
+.btn--primary:hover{ background:var(--green-deep); }
+.btn--sm{ font-size:1.4rem; padding:1rem 1.6rem; }
+
+/* shared: image placeholder (معادل blog.css) */
+.ph{ position:relative; overflow:hidden; display:grid; place-items:center; background-color:var(--surface-warm);
+  background-image:repeating-linear-gradient(135deg, transparent 0 1.1rem, color-mix(in oklch, var(--hair-strong), transparent 40%) 1.1rem 1.2rem); }
+.ph__label{ color:var(--ink-faint); text-align:center; font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:1.1rem;
+  letter-spacing:.04em; background:rgb(255 255 255 / .8); padding:.5rem 1rem; border-radius:.6rem; border:1px solid var(--hair); max-width:82%; line-height:1.5; }
+
+/* ---------- layout ---------- */
+.contact-layout{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2.4rem,4vw,4rem);
+  position:relative; z-index:2; padding-top:clamp(3rem,4vw,4.4rem); padding-bottom:clamp(4rem,6vw,7rem); align-items:start; }
+
+/* ---------- form card ---------- */
+.contact-form-card{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg);
+  padding:clamp(2.2rem,3vw,3.2rem); box-shadow:var(--shadow); }
+.contact-form-card__h{ font-family:var(--display); font-weight:800; font-size:clamp(2.2rem,1.4rem + 2.2vw,2.8rem); line-height:1.45; letter-spacing:-.01em; }
+.contact-form-card__sub{ color:var(--ink-soft); font-size:1.45rem; line-height:1.85; margin-top:.8rem; }
+.contact-form{ margin-top:2.2rem; display:flex; flex-direction:column; gap:1.6rem; }
+.cf-row{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; }
+.cf-field{ display:flex; flex-direction:column; gap:.7rem; }
+.cf-field label{ font-weight:700; font-size:1.4rem; color:var(--ink); }
+.cf-field label .req{ color:var(--clay); }
+.cf-field input, .cf-field select, .cf-field textarea{ font-family:inherit; font-size:1.5rem; color:var(--ink);
+  background:var(--surface-warm); border:1.5px solid var(--hair-strong); border-radius:var(--r);
+  padding:1.25rem 1.5rem; outline:none; transition:border-color .15s, box-shadow .15s, background .15s; width:100%; }
+.cf-field textarea{ resize:vertical; min-height:13rem; line-height:1.8; }
+.cf-field input::placeholder, .cf-field textarea::placeholder{ color:var(--ink-faint); }
+.cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus{ border-color:var(--green); background:#fff;
+  box-shadow:0 0 0 4px var(--green-soft); }
+.cf-field select{ appearance:none; -webkit-appearance:none; cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2.5'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat; background-position:left 1.5rem center; background-size:1.6rem; padding-inline-start:4rem; }
+.contact-form .btn{ align-self:flex-start; }
+.cf-note{ display:flex; align-items:center; gap:.7rem; font-size:1.3rem; color:var(--ink-faint); }
+.cf-note i{ color:var(--green); }
+.cf-ok{ display:none; align-items:center; gap:1rem; background:var(--green-soft); color:var(--green-deep);
+  border-radius:var(--r); padding:1.4rem 1.6rem; font-weight:700; font-size:1.5rem; }
+.cf-ok.show{ display:flex; }
+.cf-ok i{ font-size:1.8rem; }
+
+/* ---------- info column ---------- */
+.contact-aside{ display:flex; flex-direction:column; gap:1.6rem; }
+.contact-methods{ display:flex; flex-direction:column; gap:1.2rem; }
+.contact-method{ display:flex; align-items:center; gap:1.4rem; background:#fff; border:1px solid var(--hair);
+  border-radius:var(--r); padding:1.6rem 1.8rem; box-shadow:var(--shadow-sm); transition:border-color .15s, transform .15s, box-shadow .15s; }
+.contact-method:hover{ border-color:var(--green); transform:translateY(-2px); box-shadow:var(--shadow); }
+.contact-method__ic{ width:5rem; height:5rem; border-radius:var(--r-sm); display:grid; place-items:center; flex:0 0 auto;
+  background:var(--green-soft); color:var(--green-deep); font-size:2rem; }
+.contact-method:nth-child(2) .contact-method__ic{ background:var(--clay-soft); color:var(--clay-deep); }
+.contact-method:nth-child(3) .contact-method__ic{ background:var(--amber-soft); color:var(--gold-deep); }
+.contact-method:nth-child(4) .contact-method__ic{ background:var(--green-soft); color:var(--green-deep); }
+.contact-method__l{ font-size:1.25rem; color:var(--ink-faint); font-weight:600; }
+.contact-method__v{ font-size:1.7rem; font-weight:700; color:var(--ink); margin-top:.3rem; direction:ltr; text-align:right; unicode-bidi:plaintext; }
+
+/* address + hours + map */
+.contact-info-card{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg); padding:2rem; box-shadow:var(--shadow-sm); }
+.contact-info-card__h{ display:flex; align-items:center; gap:.8rem; font-weight:700; font-size:1.5rem; color:var(--ink); margin-bottom:1.2rem; }
+.contact-info-card__h i{ color:var(--clay); }
+.contact-info-card p{ color:var(--ink-soft); font-size:1.45rem; line-height:1.9; }
+.contact-hours{ display:flex; align-items:center; gap:.8rem; margin-top:1.4rem; padding-top:1.4rem; border-top:1px solid var(--hair);
+  font-size:1.4rem; color:var(--ink-soft); }
+.contact-hours i{ color:var(--green); }
+.contact-map{ margin-top:1.6rem; border-radius:var(--r); overflow:hidden; border:1px solid var(--hair); }
+.contact-map .ph{ height:18rem; }
+
+/* ---------- social networks block ---------- */
+.contact-social{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg); padding:2rem; box-shadow:var(--shadow-sm); }
+.contact-social__h{ display:flex; align-items:center; gap:.8rem; font-weight:700; font-size:1.5rem; color:var(--ink); margin-bottom:1.4rem; }
+.contact-social__h i{ color:var(--clay); }
+.contact-social__grid{ display:flex; flex-wrap:wrap; gap:.9rem; }
+.social-chip{ display:inline-flex; align-items:center; gap:.8rem; font-weight:700; font-size:1.4rem; color:var(--ink);
+  background:var(--surface-warm); border:1.5px solid var(--hair-strong); border-radius:999px; padding:.9rem 1.5rem; transition:all .15s; }
+.social-chip:hover{ border-color:var(--green); color:var(--green-deep); transform:translateY(-2px); }
+.social-chip__ic{ width:2.4rem; height:2.4rem; border-radius:999px; display:grid; place-items:center; flex:0 0 auto;
+  background:var(--green); color:#fff; font-size:1.2rem; font-weight:700; }
+.social-chip:nth-child(2) .social-chip__ic{ background:var(--clay); }
+.social-chip:nth-child(3) .social-chip__ic{ background:var(--gold-deep); }
+.social-chip:nth-child(4) .social-chip__ic{ background:var(--green-deep); }
+.social-chip:nth-child(5) .social-chip__ic{ background:#E1306C; }
+
+/* ---------- link card (CTA to a dedicated page) ---------- */
+.link-card{ display:flex; align-items:center; gap:1.4rem; background:#fff; border:1px solid var(--hair);
+  border-radius:var(--r-lg); padding:1.8rem; box-shadow:var(--shadow-sm); transition:border-color .15s, transform .15s, box-shadow .15s; }
+.link-card:hover{ border-color:var(--green); transform:translateY(-2px); box-shadow:var(--shadow); }
+.link-card__ic{ width:5rem; height:5rem; border-radius:var(--r-sm); display:grid; place-items:center; flex:0 0 auto;
+  background:var(--ink); color:var(--honey); font-size:2rem; }
+.link-card--clay .link-card__ic{ background:var(--clay); color:#fff; }
+.link-card__b{ flex:1; min-width:0; }
+.link-card__t{ font-weight:700; font-size:1.6rem; color:var(--ink); }
+.link-card__d{ font-size:1.3rem; color:var(--ink-faint); margin-top:.3rem; line-height:1.7; }
+.link-card__arrow{ color:var(--green); font-size:1.6rem; flex:0 0 auto; transition:transform .15s; }
+.link-card:hover .link-card__arrow{ transform:translateX(-4px); }
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .contact-layout{ grid-template-columns:1fr; padding-top:clamp(2.4rem,4vw,3.4rem); }
+  .cf-row{ grid-template-columns:1fr; }
+}

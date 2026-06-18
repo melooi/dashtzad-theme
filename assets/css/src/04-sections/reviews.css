@@ -1,0 +1,5 @@
+/* 04-sections/reviews.css
+   (Cleared.) Home reviews card-deck styles lived here (.dz-review-deck /
+   .dz-review-card / .dz-review-dot). The deck JS in assets/js/app.js is
+   defensive (no-ops without a .dz-review-deck), so this can stay empty until
+   the section is rebuilt. */

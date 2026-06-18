@@ -1,0 +1,7 @@
+/* 04-sections/footer-blog.css
+   Blog / magazine footer (template-parts/footer/footer-blog.php +
+   footer-links). Layout via Tailwind utilities inline; bespoke rules only.
+
+   Markup hooks: .dz-footer-blog */
+
+/* Reserved for magazine-footer-specific tweaks. Chrome is utility-composed. */

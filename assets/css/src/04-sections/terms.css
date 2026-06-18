@@ -1,0 +1,84 @@
+/* ============================================================
+   terms.css — صفحه «قوانین و مقررات» (هوک‌های legal-*)
+   نسخه‌ی مرجع wp/css/. هنگام انتقال → assets/css/src/04-sections/terms.css
+   rem base: html = 62.5% → 1rem = 10px
+   ------------------------------------------------------------
+   نکته: کلاس‌های faq-hero / faq-layout / faq-nav / faq-note / legal-link
+   از faq.css می‌آیند (در preview هر دو فایل لود می‌شوند). این فایل فقط
+   استایل متن حقوقی (legal-*) را اضافه می‌کند.
+   منبع اصلی terms.css در پروژه‌ی مبدأ موجود نبود (لینک ۴۰۴)، پس این
+   استایل‌ها بر پایه‌ی همان سیستم طراحی نوشته شده‌اند.
+   ============================================================ */
+
+
+/* ============================================================
+   TYPE SCALE (canonical — یکدست با کل سایت)
+   H1/Hero    : Kalameh(var --display) · 900 · lh1.35 · 30→40→52px
+   H2/Section : Kalameh(var --display) · 800 · lh1.45 · 22→28px
+   Accordion  : YekanBakh · 700 · lh1.9 · 15→16px (legal-sec__t)
+   Body/قوانین: YekanBakh · lh~2 · 14→15px
+   Description: YekanBakh · lh2 · 15→17px
+   Kalameh فقط تیترهای اصلی؛ متن قوانین/زیرعنوان/آکاردئون با YekanBakh.
+   ============================================================ */
+
+/* badge آخرین به‌روزرسانی داخل هیرو */
+.legal-updated{ position:absolute; top:clamp(1.8rem,3vw,2.6rem); left:clamp(1.6rem,4vw,4rem); z-index:3;
+  display:inline-flex; align-items:center; gap:.7rem;
+  font-weight:600; font-size:1.3rem; color:oklch(1 0 0 / .82);
+  background:oklch(1 0 0 / .1); border:1.5px solid oklch(1 0 0 / .24); border-radius:999px; padding:.7rem 1.4rem; }
+.legal-updated i{ color:var(--honey); }
+
+/* فهرست کناری بدون اسکرول داخلی (override faq.css — فهرست مقررات ۱۳ آیتمه بلندتر است) */
+.faq-nav{ max-height:none; overflow:visible; }
+
+/* ستون متن حقوقی — مثل faq-main: هر بخش یک کارت سفید مجزا */
+.legal{ min-width:0; display:flex; flex-direction:column; gap:clamp(1.6rem,2.2vw,2rem); }
+.legal-intro{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg); box-shadow:var(--shadow);
+  padding:clamp(2rem,3vw,3rem); color:var(--ink-soft); font-size:clamp(1.5rem,1.8vw,1.65rem); line-height:2; }
+.legal-intro p{ margin:0 0 1rem; }
+.legal-intro p:last-child{ margin-bottom:0; }
+.legal-intro strong{ color:var(--ink); font-weight:700; }
+
+/* هر سکشن قانون = کارت سفید مستقل (عیناً مثل آکاردئون faq-item: پدینگ روی سرستون/بدنه، نه کل کارت) */
+.legal-sec{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg); overflow:hidden;
+  scroll-margin-top:calc(var(--hdr-h, 18rem) + 2rem); transition:border-color .18s, box-shadow .18s; }
+.legal-sec:hover{ border-color:var(--hair-strong); }
+.legal-sec.is-open{ border-color:var(--green); box-shadow:var(--shadow); }
+/* سرستون کلیک‌پذیر (پدینگ روی خود سرستون، مثل faq-q) */
+.legal-sec__head{ display:flex; align-items:center; gap:1.4rem; margin:0; padding:1.9rem 2.2rem; cursor:pointer; user-select:none; }
+.legal-sec.is-open .legal-sec__head{ margin-bottom:0; }
+.legal-sec__head::after{ content:"\f067"; font-family:"Font Awesome 6 Free"; font-weight:900; flex:0 0 auto;
+  margin-inline-start:auto; width:3.2rem; height:3.2rem; border-radius:999px; display:grid; place-items:center;
+  background:var(--surface-warm); color:var(--ink-faint); font-size:1.3rem; transition:all .2s ease; }
+.legal-sec.is-open .legal-sec__head::after{ background:var(--green); color:#fff; transform:rotate(45deg); }
+/* آیکن کوچک دسته (هم‌سان با faq-group__ic؛ هنگام باز شدن سبز پررنگ می‌شود) */
+.legal-sec__ic{ width:4.4rem; height:4.4rem; border-radius:var(--r); display:grid; place-items:center; flex:0 0 auto;
+  background:var(--green-soft); color:var(--green-deep); font-size:1.9rem; transition:background .18s ease, color .18s ease; }
+.legal-sec.is-open .legal-sec__ic{ background:var(--green); color:#fff; }
+.legal-sec__t{ font-family:'YekanBakh',system-ui,sans-serif; font-weight:700; font-size:clamp(1.5rem,1.45rem + .15vw,1.6rem); letter-spacing:-.01em; line-height:1.9; }
+.legal-sec__n{ font-size:1.3rem; color:var(--ink-faint); margin-top:.2rem; }
+/* بدنهٔ جمع‌شونده (پدینگ مثل faq-a__body) */
+.legal-sec__body{ color:var(--ink-soft); font-size:1.5rem; line-height:1.95;
+  overflow:hidden; max-height:0; opacity:0; transition:max-height .3s ease, opacity .25s ease; }
+.legal-sec.is-open .legal-sec__body{ max-height:320rem; opacity:1; padding:0 2.2rem 2.2rem; }
+.legal-sec__body > p{ margin:0 0 1.2rem; }
+.legal-sec__body strong{ color:var(--ink); font-weight:700; }
+.legal-sec__body a{ color:var(--green); font-weight:700; border-bottom:1.5px solid color-mix(in oklch,var(--green),transparent 60%); }
+.legal-sec__body a:hover{ border-color:var(--green); }
+
+/* فهرست نکات با تیک */
+.legal-list{ display:flex; flex-direction:column; gap:1rem; margin:0 0 .4rem; padding:0; list-style:none; }
+.legal-list li{ display:flex; align-items:flex-start; gap:1rem; }
+.legal-list li > i{ color:var(--green); font-size:1.4rem; margin-top:.4rem; flex:0 0 auto; }
+
+/* زیرعنوان داخل سکشن (مثل بخش حریم خصوصی) */
+.legal-subh{ display:flex; align-items:center; gap:.9rem; font-family:'YekanBakh',system-ui,sans-serif; font-weight:700;
+  font-size:clamp(1.65rem,2vw,1.85rem); color:var(--ink); margin:2.2rem 0 1rem; }
+.legal-subh i{ color:var(--green); font-size:1.6rem; }
+
+/* جمع‌بندی پایانی */
+.legal-foot{ background:var(--surface-warm); border:1px solid var(--hair); border-radius:var(--r-lg);
+  padding:clamp(1.8rem,2.6vw,2.6rem);
+  color:var(--ink-soft); font-size:1.4rem; line-height:1.95; }
+.legal-foot b{ color:var(--ink); font-weight:700; }
+.legal-foot a{ color:var(--green); font-weight:700; border-bottom:1.5px solid color-mix(in oklch,var(--green),transparent 60%); }

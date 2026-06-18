@@ -1,0 +1,32 @@
+/* 04-sections/header-blog.css
+   Blog / magazine header (template-parts/header/header-blog.php + shared nav
+   partials). Same tokens and visual language as the store header; layout via
+   Tailwind utilities inline. Bespoke, non-utility rules only.
+
+   Markup hooks: .dz-header-blog, .dz-nav, .dz-nav__ai
+   (The shared .dz-nav--desktop / .dz-nav--mobile responsive toggle and
+   scrollbar reset live in header-main.css, since the nav partials are common.) */
+
+/* "دستیار آشپزی هوشمند" — warm gold→green underline accent unique to the
+   magazine nav. Additive: the link's base border stays transparent. */
+.dz-nav__ai {
+  position: relative;
+}
+.dz-nav__ai::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  opacity: 0;
+  transform: scaleX(.4);
+  transform-origin: center;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.dz-nav__ai:hover::after,
+.dz-nav__ai:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}

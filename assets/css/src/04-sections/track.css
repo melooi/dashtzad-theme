@@ -1,0 +1,96 @@
+/* ============================================================
+   track.css — صفحه «پیگیری سفارش» (هوک‌های support-* / track-*)
+   نسخه‌ی مرجع wp/css/. هنگام انتقال → assets/css/src/04-sections/track.css
+   rem base: html = 62.5% → 1rem = 10px
+   ------------------------------------------------------------
+   منبع: track-order.html (ریشه). کلاس‌های faq-hero / faq-fact / faq-steps /
+   faq-note از faq.css می‌آیند (در preview هر دو لود می‌شوند). استایل‌های
+   support-*/track-* و .btn در منبع داخل contact.css/blog.css بودند و این‌جا
+   آورده شده‌اند تا صفحه مستقل کار کند.
+   ============================================================ */
+
+
+/* ============================================================
+   TYPE SCALE (canonical — یکدست با کل سایت)
+   H1/Hero    : Kalameh(var --display) · 900 · lh1.35 · 30→40→52px
+   H2/Section : Kalameh(var --display) · 800 · lh1.45 · 22→28px (support-card__t)
+   Body       : YekanBakh · lh2.1 · 14→15px
+   Description: YekanBakh · lh2 · 15→17px
+   Button     : YekanBakh · 700 · 14→15px
+   Kalameh فقط تیترهای اصلی؛ متن/فرم/دکمه با YekanBakh.
+   ============================================================ */
+
+/* shared: buttons (معادل blog.css) */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.9rem; font-weight:700; font-family:inherit; cursor:pointer; border:none;
+  border-radius:var(--r); font-size:clamp(1.4rem,1.35rem + .15vw,1.5rem); padding:1.35rem 2.2rem;
+  transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s, border-color .2s; }
+.btn:active{ transform:translateY(1px); }
+.btn--primary{ background:var(--green); color:#fff; box-shadow:0 6px 18px color-mix(in oklch, var(--green), transparent 72%); }
+.btn--primary:hover{ background:var(--green-deep); }
+
+/* ---------- centered single column (پیگیری/پشتیبانی) ---------- */
+.support-wrap{ max-width:86rem; margin-inline:auto; margin-top:0; position:relative; z-index:2;
+  padding-top:clamp(3rem,4vw,4.4rem); padding-bottom:clamp(4rem,6vw,7rem); }
+.support-card{ background:#fff; border:1px solid var(--hair); border-radius:var(--r-lg);
+  padding:clamp(2.2rem,3.4vw,3.4rem); box-shadow:var(--shadow); }
+.support-card + .support-card{ margin-top:2rem; }
+.support-card__h{ display:flex; align-items:center; gap:1.2rem; margin-bottom:1.8rem; }
+.support-card__ic{ width:5rem; height:5rem; border-radius:var(--r); display:grid; place-items:center; flex:0 0 auto;
+  background:var(--green-soft); color:var(--green-deep); font-size:2rem; }
+.support-card__t{ font-family:var(--display); font-weight:800; font-size:clamp(2.2rem,1.4rem + 2.2vw,2.8rem); line-height:1.45; letter-spacing:-.01em; }
+.support-card__n{ font-size:1.35rem; color:var(--ink-faint); margin-top:.2rem; }
+
+/* tracking form (inline) */
+.track-form{ display:flex; gap:1rem; background:var(--surface-warm); border:1.5px solid var(--hair-strong);
+  border-radius:var(--r); padding:.7rem; }
+.track-form input{ flex:1; border:none; outline:none; background:transparent; font-family:inherit; font-size:1.5rem;
+  color:var(--ink); padding:1.1rem 1.4rem; min-width:0; }
+.track-form input::placeholder{ color:var(--ink-faint); }
+
+/* status timeline */
+.track-result{ display:none; margin-top:2.2rem; }
+.track-result.show{ display:block; }
+.track-meta{ display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
+.track-timeline{ list-style:none; margin:0; padding:0; position:relative; }
+.track-step{ display:flex; gap:1.4rem; padding-bottom:2.4rem; position:relative; }
+.track-step:last-child{ padding-bottom:0; }
+.track-step::before{ content:""; position:absolute; inset-inline-start:1.85rem; top:3.8rem; bottom:0; width:2px; background:var(--hair); }
+.track-step:last-child::before{ display:none; }
+.track-step__dot{ width:3.8rem; height:3.8rem; border-radius:999px; display:grid; place-items:center; flex:0 0 auto; position:relative;
+  background:var(--surface-warm); border:2px solid var(--hair-strong); color:var(--ink-faint); font-size:1.5rem; z-index:1;
+  transition:background .4s ease, border-color .4s ease, color .4s ease; }
+/* آیکن داخل دایره — اول پنهان؛ پس از سبزشدن دایره آرام تیک می‌خورد */
+.track-step__dot i{ opacity:0; transform:scale(.3); transition:opacity .3s ease, transform .45s cubic-bezier(.34,1.56,.64,1); }
+.track-step.lit .track-step__dot i{ opacity:1; transform:scale(1); transition-delay:.3s; }
+/* موجِ بیرون‌رونده از دایره */
+.track-step__dot::after{ content:""; position:absolute; inset:-2px; border-radius:999px; border:2px solid var(--green); opacity:0; pointer-events:none; }
+.track-step.is-done.lit .track-step__dot::after{ animation:dz-ripple .95s ease-out .25s; }
+.track-step.is-current.lit .track-step__dot::after{ border-color:var(--gold); animation:dz-ripple .95s ease-out .25s; }
+@keyframes dz-ripple{ 0%{ transform:scale(1); opacity:.65; } 100%{ transform:scale(2.5); opacity:0; } }
+/* دایرهٔ سبز مراحل انجام‌شده — فقط هنگام پخش روشن می‌شود */
+.track-step.is-done.lit .track-step__dot{ background:var(--green); border-color:var(--green); color:#fff; }
+/* مرحلهٔ جاری — حلقهٔ طلایی پالس‌دار با تأخیر */
+.track-step.is-current.lit .track-step__dot{ background:var(--amber-soft); border-color:var(--gold); color:var(--gold-deep); box-shadow:0 0 0 .4rem color-mix(in oklch,var(--gold),transparent 80%); animation:track-pulse 1.8s ease-in-out infinite .9s; }
+@keyframes track-pulse{ 0%,100%{ box-shadow:0 0 0 .25rem color-mix(in oklch,var(--gold),transparent 55%); } 50%{ box-shadow:0 0 0 .9rem color-mix(in oklch,var(--gold),transparent 100%); } }
+/* خط رابط: پایهٔ خاکستری (::before) + پرشدنِ سبزِ انیمیتد (::after) */
+.track-step::after{ content:""; position:absolute; inset-inline-start:1.85rem; top:3.8rem; bottom:0; width:2px; background:var(--green); transform:scaleY(0); transform-origin:top; z-index:0; }
+.track-step:last-child::after{ display:none; }
+.track-step.is-done.lit::after{ transform:scaleY(1); transition:transform .55s ease .35s; }
+.track-step__b{ padding-top:.4rem; opacity:0; transform:translateY(.5rem); transition:opacity .4s ease, transform .4s ease; }
+.track-step.lit .track-step__b{ opacity:1; transform:none; transition-delay:.18s; }
+.track-step__t{ font-weight:700; font-size:1.6rem; color:var(--ink); }
+.track-step.is-pending .track-step__t{ color:var(--ink-faint); }
+.track-step__d{ font-size:1.35rem; color:var(--ink-soft); margin-top:.3rem; }
+
+/* ---------- timeline polish (تم دشت‌زاد: خط سبز مراحل طی‌شده + مرحلهٔ جاری طلایی) ---------- */
+.track-lead{ font-size:1.45rem; color:var(--ink-soft); line-height:1.85; margin-bottom:2rem; text-wrap:pretty; }
+.track-lead b{ color:var(--green-deep); font-weight:700; }
+.track-timeline{ margin-top:.2rem; }
+.track-step{ padding-bottom:2.8rem; }
+.track-step__d b{ color:var(--green-deep); font-weight:700; }
+@media (prefers-reduced-motion: reduce){
+  .track-step__dot, .track-step__dot i, .track-step__b{ transition:none; opacity:1; transform:none; }
+  .track-step__dot::after{ display:none; }
+  .track-step.is-done.lit::after{ transition:none; }
+  .track-step.is-current.lit .track-step__dot{ animation:none; }
+}
