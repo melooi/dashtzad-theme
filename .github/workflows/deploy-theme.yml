@@ -1,9 +1,11 @@
+cat > .github/workflows/deploy-theme.yml <<'YAML'
 name: Deploy WordPress Theme
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -28,3 +30,8 @@ jobs:
             **/node_modules/**
             **/.DS_Store
             **/README.md
+YAML
+
+git add .github/workflows/deploy-theme.yml
+git commit -m "Use cPanel FTP details"
+git push origin main
